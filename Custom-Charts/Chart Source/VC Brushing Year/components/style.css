@@ -1,0 +1,99 @@
+.brush .extent {
+    fill: url(#year-brush-stripes);
+    stroke: none;
+    fill-opacity: 0.8;
+    shape-rendering: crispEdges;
+}
+
+rect.bar {
+    fill: url(#year-bar-stripes);
+}
+
+/*.selecting rect {*/
+/*    stroke: none;*/
+/*    fill: #ccc;*/
+/*}*/
+
+.selecting rect.selected {
+  fill: #78C9D1;
+}
+
+.bars-group {
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;
+}
+
+.bar-group,
+.axis.control {
+    cursor: pointer;
+}
+
+.bar-group {
+    opacity: 0.9;
+    -webkit-transition: opacity .1s ease-in-out;
+    -moz-transition: opacity .1s ease-in-out;
+    -ms-transition: opacity .1s ease-in-out;
+    -o-transition: opacity .1s ease-in-out;
+    transition: opacity .1s ease-in-out;
+}
+
+.bar-group:hover {
+    opacity: 1;
+}
+
+.axis.control > rect {
+    fill: #F1F1F1;
+}
+
+.x.axis.control:hover > rect {
+    fill: #F8A918;
+}
+
+.y.axis.control:hover > rect {
+    fill: #0389A7;
+}
+
+.axis.control > text {
+    fill: #939393;
+    font-weight: bold;
+}
+
+.axis.control:hover > text {
+    fill: #FFFFFF;
+}
+
+text.label {
+    font-size: 14px;
+    font-weight: 900;
+    text-align: middle;
+    alignment-baseline: middle;
+    stroke: #999999;
+    stroke-width: 1;
+    letter-spacing: 0.01em;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+.axisXLabelContainer{
+    position: absolute;
+    width: 100%;
+    bottom: 4px;
+    text-align: center;
+}
+.axisYLabelContainer .axisLabel{
+    margin-left: -10px;
+}
+.axisYLabelContainer .axisLabel.small{
+    margin-left: -5px;
+}
+.axisYLabelContainer{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
