@@ -1,6 +1,6 @@
-var apiKey = 'YOUR_KEY_HERE',           // your API key
-    host = 'localhost:8080/zoomdata',   // your zoomdata server
-    secure = true,                      // true for SSL, false otherwise
+var apiKey = '55dc7902d4c60faa6e5ee223',            // your API key
+    host = 'localhost:8080/zoomdata',               // your zoomdata server
+    secure = false,                                 // true for SSL, false otherwise
     sourceName = 'Vehicle Complaints',
     lifted = false,
     hasNextDetails = true,
@@ -560,7 +560,7 @@ function closeHood() {
 var zoomdataClient = new ZoomdataClient({
     apiKey: apiKey,
     host: host,
-    secure: true
+    secure: secure // Bug fix - Olivier 8/25
 });
 
 // Call the visualization function to start visualizing
@@ -603,14 +603,15 @@ zoomdataClient.visualize({
             // Pass {silent: true} as the second parameter so that the query
             //  does not run immediately. This is useful, when you know you will
             //  immediately set a filter after removing it, like in this case.
+
+
             countTextVis.controller.state.removeFilter(modelFilter, {silent: true});
             countTextVis.controller.state.setFilter(filter);
 
             crashesGaugeVis.controller.state.removeFilter(modelFilter, {silent: true});
             crashesGaugeVis.controller.state.setFilter(filter);
-
             injuriesGaugeVis.controller.state.removeFilter(modelFilter, {silent: true});
-            injuriesGaugeVis.controller.state.setFilter(filter);
+           injuriesGaugeVis.controller.state.setFilter(filter);
 
             firesGaugeVis.controller.state.removeFilter(modelFilter, {silent: true});
             firesGaugeVis.controller.state.setFilter(filter);
@@ -625,6 +626,7 @@ zoomdataClient.visualize({
                 mapVis.controller.state.removeFilter(modelFilter, {silent: true});
                 mapVis.controller.state.setFilter(filter);
             }
+
         });
 });
 
@@ -636,6 +638,7 @@ zoomdataClient.visualize({
     countTextVis = visualization;
 });
 
+
 zoomdataClient.visualize({
     visualization: "VC Crashes Gauge",
     source: sourceName,
@@ -643,6 +646,7 @@ zoomdataClient.visualize({
 }).done(function(visualization) {
     crashesGaugeVis = visualization;
 });
+
 
 zoomdataClient.visualize({
     visualization: "VC Injuries Gauge",
@@ -667,7 +671,7 @@ zoomdataClient.visualize({
 }).done(function(visualization) {
     speedGaugeVis = visualization;
 });
-
+//
 zoomdataClient.visualize({
     visualization: "VC Scatterplot",
     source: sourceName,
@@ -715,6 +719,7 @@ zoomdataClient.visualize({
             if (mapVis) {
                 mapVis.controller.state.setFilter(filter);
             }
+
         });
 });
 
@@ -743,10 +748,12 @@ zoomdataClient.visualize({
             speedGaugeVis.controller.state.setFilter(filter);
             scatterplotVis.controller.state.setFilter(filter);
             if (mapVis) mapVis.controller.state.setFilter(filter);
+
         } else {
             var filter = {
                 path: 'year'
             };
+
 
             countTextVis.controller.state.removeFilter(filter);
             crashesGaugeVis.controller.state.removeFilter(filter);
@@ -755,6 +762,7 @@ zoomdataClient.visualize({
             speedGaugeVis.controller.state.removeFilter(filter);
             scatterplotVis.controller.state.removeFilter(filter);
             if (mapVis) mapVis.controller.state.removeFilter(filter);
+
         }
     });
 });
